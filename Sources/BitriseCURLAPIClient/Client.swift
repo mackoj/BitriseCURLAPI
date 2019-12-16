@@ -1,5 +1,6 @@
 import TinyNetworking
 import Foundation
+import BitriseCURLAPI
 
 enum BitriseCURLAPIError : Error {
   case accountIDShouldNotBeEmpty

@@ -1,15 +1,34 @@
 import XCTest
 import BitriseCURLAPI
-@testable import BitriseCURLAPIClientTests
+import TinyNetworking
+@testable import BitriseCURLAPIClient
 
 final class BitriseCURLAPIClientTests: XCTestCase {
     func testExample() {
-      let req = BitriseCURLAPIRequest(hookInfo: <#T##HookInfo?#>, buildParams: <#T##BuildParams?#>, triggeredBy: <#T##String?#>)
+      let invalidData = Data()
+      let validData = Data()
+      let req = BitriseCURLAPIRequest(
+        hookInfo: HookInfo(
+          type: "bitrise",
+          buildTriggerToken: "123"
+        ),
+        buildParams: BuildParams(
+          branch: "pika",
+          workflowid: "chuuu",
+          environments: [
+            Environment(
+              mappedTo: "FUTURE_VERSION",
+              value: "12345",
+              isExpand: true
+            )
+          ]
+        ),
+        triggeredBy: "android_deployer"
+      )
       
-      let startBuild = try startBuild(accountID: "", body: req)
-      XCTAssertThrows(try startBuild.parse(nil, nil).get())
-      XCTAssertThrows(try startBuild.parse(invalidData, nil).get())
-      XCTAssertNoThrow(try startBuild.parse(validData, nil).get())
+      XCTAssertThrowsError(try startBuild(accountID: "456", body: req).parse(nil, nil).get())
+      XCTAssertThrowsError(try startBuild(accountID: "456", body: req).parse(invalidData, nil).get())
+      XCTAssertNoThrow(try startBuild(accountID: "456", body: req).parse(validData, nil).get())
     }
 
     static var allTests = [
