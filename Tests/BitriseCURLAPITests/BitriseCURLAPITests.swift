@@ -3,10 +3,12 @@ import XCTest
 
 final class BitriseCURLAPITests: XCTestCase {
     func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
-        XCTAssertEqual(BitriseCURLAPI().text, "Hello, World!")
+      let req = BitriseCURLAPIRequest(hookInfo: <#T##HookInfo?#>, buildParams: <#T##BuildParams?#>, triggeredBy: <#T##String?#>)
+      
+      let startBuild = try startBuild(accountID: "", body: req)
+      XCTAssertThrows(try startBuild.parse(nil, nil).get())
+      XCTAssertThrows(try startBuild.parse(invalidData, nil).get())
+      XCTAssertNoThrow(try startBuild.parse(validData, nil).get())
     }
 
     static var allTests = [
