@@ -6,6 +6,7 @@ import PackageDescription
 let package = Package(
   name: "BitriseCURLAPI",
   products: [
+    .library(name: "BitriseCURLAPIClient", targets: ["BitriseCURLAPIClient"]),
     .library(
       name: "BitriseCURLAPI",
       targets: ["BitriseCURLAPI"]),
@@ -15,10 +16,14 @@ let package = Package(
   ],
   targets: [
     .target(
-      name: "BitriseCURLAPI",
-      dependencies: ["TinyNetworking"]),
+      name: "BitriseCURLAPIClient",
+      dependencies: ["BitriseCURLAPI", "TinyNetworking"]),
+    .target(name: "BitriseCURLAPI"),
     .testTarget(
       name: "BitriseCURLAPITests",
       dependencies: ["BitriseCURLAPI"]),
+  .testTarget(
+    name: "BitriseCURLAPIClientTests",
+    dependencies: ["BitriseCURLAPIClient"]),
   ]
 )
