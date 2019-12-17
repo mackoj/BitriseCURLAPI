@@ -1,11 +1,3 @@
-//
-//  BitriseCURLResponse.swift
-//  Android Deployer
-//
-//  Created by Jeffrey Macko on 28/11/2019.
-//  Copyright © 2019 HawkCI. All rights reserved.
-//
-
 import Foundation
 
 // MARK: - BitriseCURLResponse
