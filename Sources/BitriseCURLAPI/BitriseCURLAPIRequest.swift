@@ -20,12 +20,12 @@ import Foundation
 // MARK: - BuildParams
 public struct BuildParams: Equatable, Codable {
     public let branch: String?
-    public let workflowid: String?
+    public let workflowId: String?
     public let environments: [Environment]?
 
-    public init(branch: String?, workflowid: String?, environments: [Environment]?) {
+    public init(branch: String?, workflowId: String?, environments: [Environment]?) {
         self.branch = branch
-        self.workflowid = workflowid
+        self.workflowId = workflowId
         self.environments = environments
     }
 }
