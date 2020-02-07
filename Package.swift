@@ -12,7 +12,7 @@ let package = Package(
       targets: ["BitriseCURLAPI"]),
   ],
   dependencies: [
-    .package(url: "https://github.com/objcio/tiny-networking", .branch("master"))
+    .package(url: "https://github.com/mackoj/tiny-networking", .branch("patch-1"))
   ],
   targets: [
     .target(
