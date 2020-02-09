@@ -3,5 +3,5 @@ import XCTest
 import BitriseCURLAPITests
 
 var tests = [XCTestCaseEntry]()
-tests += BitriseCURLAPITests.allTests()
+tests += BitriseCURLAPIClientTests.allTests()
 XCTMain(tests)

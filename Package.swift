@@ -7,23 +7,18 @@ let package = Package(
   name: "BitriseCURLAPI",
   products: [
     .library(name: "BitriseCURLAPIClient", targets: ["BitriseCURLAPIClient"]),
-    .library(
-      name: "BitriseCURLAPI",
-      targets: ["BitriseCURLAPI"]),
+    .library(name: "BitriseCURLAPI", targets: ["BitriseCURLAPI"]),
   ],
   dependencies: [
-    .package(url: "https://github.com/objcio/tiny-networking", .branch("master"))
+    .package(url: "https://github.com/swift-server/async-http-client.git", from: "1.0.1"),
   ],
   targets: [
+    .target(name: "BitriseCURLAPI"),
     .target(
       name: "BitriseCURLAPIClient",
-      dependencies: ["BitriseCURLAPI", "TinyNetworking"]),
-    .target(name: "BitriseCURLAPI"),
+      dependencies: ["BitriseCURLAPI", "AsyncHTTPClient"]),
     .testTarget(
-      name: "BitriseCURLAPITests",
-      dependencies: ["BitriseCURLAPI"]),
-  .testTarget(
-    name: "BitriseCURLAPIClientTests",
-    dependencies: ["BitriseCURLAPIClient"]),
+      name: "BitriseCURLAPIClientTests",
+      dependencies: ["BitriseCURLAPIClient"]),
   ]
 )
