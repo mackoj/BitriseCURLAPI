@@ -10,7 +10,7 @@ let package = Package(
     .library(name: "BitriseCURLAPI", targets: ["BitriseCURLAPI"]),
   ],
   dependencies: [
-    .package(url: "https://github.com/swift-server/async-http-client.git", from: "1.0.1"),
+    .package(url: "https://github.com/swift-server/async-http-client.git", from: "1.1.0"),
   ],
   targets: [
     .target(name: "BitriseCURLAPI"),
